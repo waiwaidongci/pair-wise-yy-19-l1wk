@@ -13,7 +13,10 @@
         <p>Petrographic Slide Index</p>
         <h1>岩芯薄片显微照片索引台</h1>
       </div>
-      <button id="exportBtn" type="button">导出观察清单</button>
+      <div class="mast-actions">
+        <button id="historyBtn" type="button" class="ghost">合并记录</button>
+        <button id="exportBtn" type="button">导出观察清单</button>
+      </div>
     </header>
 
     <section class="layout">
@@ -39,14 +42,17 @@
       </form>
 
       <section class="board">
-        <div class="filters">
-          <input id="mineralFilter" placeholder="按矿物筛选">
-          <select id="polarFilter">
-            <option value="">全部偏光</option>
-            <option>单偏光</option>
-            <option>正交偏光</option>
-            <option>反射光</option>
-          </select>
+        <div class="board-head">
+          <div class="filters">
+            <input id="mineralFilter" placeholder="按矿物筛选">
+            <select id="polarFilter">
+              <option value="">全部偏光</option>
+              <option>单偏光</option>
+              <option>正交偏光</option>
+              <option>反射光</option>
+            </select>
+          </div>
+          <button id="openMergeBtn" type="button">档案合并</button>
         </div>
         <div id="sampleGrid" class="sample-grid"></div>
       </section>
@@ -54,9 +60,67 @@
       <aside class="compare">
         <h2>并排对比</h2>
         <div id="comparePane" class="compare-pane"></div>
+        <button id="mergeCompareBtn" type="button" class="ghost block" hidden>合并对比的两张档案</button>
       </aside>
     </section>
   </main>
+
+  <!-- 档案合并：录入区 / 判断 / 卡片操作 三段分离，确认前不动任何档案 -->
+  <dialog id="mergeDialog" class="merge-dialog">
+    <header class="dialog-head">
+      <div>
+        <p>Archive Merge</p>
+        <h2>档案合并</h2>
+      </div>
+      <button type="button" id="mergeCloseBtn" class="icon-btn" aria-label="关闭">×</button>
+    </header>
+    <p class="dialog-tip">两位老师为同一张薄片各建了一份卡片时使用。<strong>确认合并前，两份档案都不会被改动。</strong></p>
+
+    <section class="merge-step">
+      <h3><span class="step-no">1</span>合并录入 · 选择两张档案并指定主档</h3>
+      <div class="merge-select-pair">
+        <label>档案 A
+          <select id="mergeA"></select>
+        </label>
+        <label>档案 B
+          <select id="mergeB"></select>
+        </label>
+      </div>
+      <div class="master-choice">
+        <label><input type="radio" name="mergeMaster" value="a"> 以 A（<b id="masterACode"></b>）为主档</label>
+        <label><input type="radio" name="mergeMaster" value="b"> 以 B（<b id="masterBCode"></b>）为主档</label>
+      </div>
+      <p id="mergeWarn" class="merge-warn" hidden>请选择两张不同的档案。</p>
+    </section>
+
+    <section class="merge-step">
+      <h3><span class="step-no">2</span>逐项判断 · 不一致的内容选择保留哪边</h3>
+      <div id="mergeJudgment" class="judge-table"></div>
+    </section>
+
+    <section class="merge-step">
+      <h3><span class="step-no">3</span>卡片操作</h3>
+      <div id="mergeSummary" class="merge-summary"></div>
+      <div class="merge-actions">
+        <button type="button" id="mergeCancelBtn" class="ghost">取消</button>
+        <button type="button" id="mergeConfirmBtn">确认合并</button>
+      </div>
+    </section>
+  </dialog>
+
+  <!-- 合并履历与快照拆回 -->
+  <dialog id="historyDialog" class="history-dialog">
+    <header class="dialog-head">
+      <div>
+        <p>Merge History</p>
+        <h2>合并记录</h2>
+      </div>
+      <button type="button" id="historyCloseBtn" class="icon-btn" aria-label="关闭">×</button>
+    </header>
+    <p class="dialog-tip">每次合并都会保存双方合并前快照。误合时，最近一次合并可按快照原样拆回。</p>
+    <div id="historyList" class="history-list"></div>
+  </dialog>
+
   <script src="./app.js"></script>
 </body>
 </html>

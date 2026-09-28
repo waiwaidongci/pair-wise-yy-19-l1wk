@@ -83,6 +83,7 @@ button {
 
 .editor,
 .board,
+.judge,
 .compare {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -91,6 +92,7 @@ button {
 }
 
 .editor,
+.judge,
 .compare {
   padding: 16px;
 }
@@ -200,6 +202,265 @@ textarea {
   min-height: 32px;
   background: #e8f0eb;
   color: var(--ink);
+}
+
+.card-actions button.is-merge {
+  background: #f4e6cd;
+  color: #6f4a10;
+}
+
+.sample-card.is-master {
+  outline: 2px solid var(--accent);
+}
+
+.sample-card.is-source {
+  outline: 2px dashed var(--amber);
+}
+
+.board-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.merge-hint {
+  margin: 0;
+  color: var(--amber);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rail {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.merge-steps {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.merge-pane {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.merge-empty {
+  margin: 0;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.merge-roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.merge-role {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.merge-role strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 13px;
+}
+
+.merge-role.is-master strong {
+  color: var(--accent);
+}
+
+.merge-role.is-source strong {
+  color: var(--amber);
+}
+
+.merge-field {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  padding: 8px 10px;
+}
+
+.merge-field.conflict {
+  border-color: var(--amber);
+  background: #fdf7ec;
+}
+
+.merge-field-title {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.merge-field-title .tag {
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: #f4e6cd;
+  color: #6f4a10;
+  font-weight: 600;
+}
+
+.merge-options {
+  display: grid;
+  gap: 4px;
+}
+
+.merge-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink);
+  white-space: normal;
+}
+
+.merge-options input {
+  width: auto;
+  flex: none;
+}
+
+.merge-value {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.merge-thumbs {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.merge-thumbs figure {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+}
+
+.merge-thumbs img,
+.merge-thumbs .photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #dfe9e4;
+  border: 1px solid var(--line);
+}
+
+.merge-thumbs figcaption {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.merge-bar {
+  display: flex;
+  gap: 8px;
+}
+
+.merge-bar button {
+  flex: 1;
+  min-height: 36px;
+  font-size: 13px;
+}
+
+.merge-bar button.ghost {
+  background: #e8f0eb;
+  color: var(--ink);
+}
+
+.merge-log {
+  border-top: 1px dashed var(--line);
+  padding-top: 10px;
+}
+
+.merge-log h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+
+.merge-log-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.merge-log-item code {
+  background: #eef3ef;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.merge-log-item button {
+  min-height: 28px;
+  margin-top: 6px;
+  padding: 0 10px;
+  font-size: 12px;
+  background: #f4e6cd;
+  color: #6f4a10;
+}
+
+.history-line {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--line);
+  color: var(--amber);
+  font-size: 12px;
+}
+
+.gallery {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 6px;
+  overflow-x: auto;
+}
+
+.gallery img {
+  width: 56px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  flex: none;
+}
+
+.comment-block {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+.comment-block .who {
+  display: block;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .compare-pane {

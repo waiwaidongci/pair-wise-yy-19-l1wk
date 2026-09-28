@@ -39,6 +39,10 @@
       </form>
 
       <section class="board">
+        <div class="board-head">
+          <h2>卡片操作</h2>
+          <p id="mergeHint" class="merge-hint" hidden></p>
+        </div>
         <div class="filters">
           <input id="mineralFilter" placeholder="按矿物筛选">
           <select id="polarFilter">
@@ -51,9 +55,22 @@
         <div id="sampleGrid" class="sample-grid"></div>
       </section>
 
-      <aside class="compare">
-        <h2>并排对比</h2>
-        <div id="comparePane" class="compare-pane"></div>
+      <aside class="rail">
+        <section class="judge">
+          <h2>档案合并 · 判断</h2>
+          <ol class="merge-steps">
+            <li>先在卡片上点「合并」选主档</li>
+            <li>再点另一张卡片选为被并档</li>
+            <li>逐栏对照，不同的选定保留哪边</li>
+            <li>确认前两份卡片都不会改动</li>
+          </ol>
+          <div id="mergePane" class="merge-pane"></div>
+        </section>
+
+        <section class="compare">
+          <h2>并排对比</h2>
+          <div id="comparePane" class="compare-pane"></div>
+        </section>
       </aside>
     </section>
   </main>
